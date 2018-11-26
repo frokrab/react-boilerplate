@@ -14,6 +14,7 @@ import { FormattedMessage } from 'react-intl';
 import messages from './messages';
 
 import Input from './Input';
+import Form from './Form';
 
 /* eslint-disable react/prefer-stateless-function */
 export default class HomePage extends React.PureComponent {
@@ -23,7 +24,9 @@ export default class HomePage extends React.PureComponent {
         <h1>
           <FormattedMessage {...messages.header} />
         </h1>
-        <Input placeholder="enter your note here" />
+        <Form>
+          <Input placeholder="enter your note here" />
+        </Form>
       </div>
     );
   }
