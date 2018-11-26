@@ -15,6 +15,7 @@ import messages from './messages';
 
 import Input from './Input';
 import Form from './Form';
+import Submit from './Submit';
 
 /* eslint-disable react/prefer-stateless-function */
 export default class HomePage extends React.PureComponent {
@@ -26,6 +27,7 @@ export default class HomePage extends React.PureComponent {
         </h1>
         <Form>
           <Input placeholder="enter your note here" />
+          <Submit type="submit" value="Save" />
         </Form>
       </div>
     );
