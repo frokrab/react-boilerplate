@@ -1,0 +1,6 @@
+CREATE SCHEMA IF NOT EXISTS dmi_notes;
+
+CREATE TABLE IF NOT EXISTS dmi_notes.notes (
+  id SERIAL PRIMARY KEY,
+  note TEXT
+);
