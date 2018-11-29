@@ -16,13 +16,20 @@ import { connect } from 'react-redux';
 import { compose } from 'redux';
 
 import injectReducer from 'utils/injectReducer';
+import injectSaga from 'utils/injectSaga';
 import messages from './messages';
 import Input from './Input';
 import Form from './Form';
 import Submit from './Submit';
-import { changeInput } from './actions';
-import { makeSelectInput } from './selectors';
+import { changeInput, getNotes } from './actions';
+import {
+  makeSelectInput,
+  makeSelectNotes,
+  makeSelectLoading,
+  makeSelectError,
+} from './selectors';
 import reducer from './reducer';
+import saga from './saga';
 
 /* eslint-disable react/prefer-stateless-function */
 export class HomePage extends React.PureComponent {
@@ -38,7 +45,7 @@ export class HomePage extends React.PureComponent {
             value={this.props.input}
             onChange={this.props.onChangeInput}
           />
-          <Submit type="submit" value="Save" />
+          <Submit type="submit" value="Save" onClick={this.props.getNotes} />
         </Form>
       </div>
     );
@@ -47,10 +54,17 @@ export class HomePage extends React.PureComponent {
 
 const mapDispatchToProps = dispatch => ({
   onChangeInput: event => dispatch(changeInput(event.target.value)),
+  getNotes: event => {
+    event.preventDefault();
+    dispatch(getNotes());
+  },
 });
 
 const mapStateToProps = createStructuredSelector({
   input: makeSelectInput(),
+  notes: makeSelectNotes(),
+  loading: makeSelectLoading(),
+  error: makeSelectError(),
 });
 
 const withConnect = connect(
@@ -58,9 +72,12 @@ const withConnect = connect(
   mapDispatchToProps,
 );
 
+const withSaga = injectSaga({ key: 'home', saga });
+
 const withReducer = injectReducer({ key: 'home', reducer });
 
 export default compose(
   withReducer,
+  withSaga,
   withConnect,
 )(HomePage);
