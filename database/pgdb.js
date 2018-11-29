@@ -5,7 +5,6 @@ const config = require('./config');
 const client = new Pool(config);
 
 const saveNote = (req, res) => {
-  console.log(req.body.input);
   client
     .query(`INSERT INTO dmi_notes.notes (note) VALUES ($1);`, [req.body.input])
     .then(() => res.sendStatus(201))
