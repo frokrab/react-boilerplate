@@ -21,10 +21,9 @@ import messages from './messages';
 import Input from './Input';
 import Form from './Form';
 import Submit from './Submit';
-import { changeInput, getNotes } from './actions';
+import { changeInput, saveNote } from './actions';
 import {
   makeSelectInput,
-  makeSelectNotes,
   makeSelectLoading,
   makeSelectError,
 } from './selectors';
@@ -39,13 +38,13 @@ export class HomePage extends React.PureComponent {
         <h1>
           <FormattedMessage {...messages.header} />
         </h1>
-        <Form>
+        <Form onSubmit={this.props.saveNote}>
           <Input
             placeholder="enter your note here"
             value={this.props.input}
             onChange={this.props.onChangeInput}
           />
-          <Submit type="submit" value="Save" onClick={this.props.getNotes} />
+          <Submit type="submit" value="Save" />
         </Form>
       </div>
     );
@@ -54,15 +53,14 @@ export class HomePage extends React.PureComponent {
 
 const mapDispatchToProps = dispatch => ({
   onChangeInput: event => dispatch(changeInput(event.target.value)),
-  getNotes: event => {
+  saveNote: event => {
     event.preventDefault();
-    dispatch(getNotes());
+    dispatch(saveNote());
   },
 });
 
 const mapStateToProps = createStructuredSelector({
   input: makeSelectInput(),
-  notes: makeSelectNotes(),
   loading: makeSelectLoading(),
   error: makeSelectError(),
 });

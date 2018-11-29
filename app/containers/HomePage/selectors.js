@@ -7,9 +7,6 @@ export const selectHome = state => state.get('home', initialState);
 export const makeSelectInput = () =>
   createSelector(selectHome, homeState => homeState.get('input'));
 
-export const makeSelectNotes = () =>
-  createSelector(selectHome, homeState => homeState.get('notes'));
-
 export const makeSelectLoading = () =>
   createSelector(selectHome, homeState => homeState.get('loading'));
 

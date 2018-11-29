@@ -1,21 +1,22 @@
 import axios from 'axios';
-import { put, call, takeLatest } from 'redux-saga/effects';
+import { put, call, takeLatest, select } from 'redux-saga/effects';
 
-import { GET_NOTES } from './constants';
-import { getNotesSuccess, getNotesFailure } from './actions';
+import { SAVE_NOTE } from './constants';
+import { saveNoteFailure, saveNoteSuccess } from './actions';
+import { makeSelectInput } from './selectors';
 
-const fetchNotes = () => axios.get('http://localhost:3000/notes');
+const saveNote = input => axios.post('http://localhost:3000/notes', { input });
 
-function* getNotesSaga() {
+function* saveNoteSaga() {
   try {
-    const response = yield call(fetchNotes);
-    const notes = response.data.rows;
-    yield put(getNotesSuccess(notes));
+    const note = yield select(makeSelectInput());
+    yield call(saveNote, note);
+    yield put(saveNoteSuccess());
   } catch (error) {
-    yield put(getNotesFailure(error));
+    yield put(saveNoteFailure(error));
   }
 }
 
-export default function* homeSaga() {
-  yield takeLatest(GET_NOTES, getNotesSaga);
+export default function* saveNoteWatcherSaga() {
+  yield takeLatest(SAVE_NOTE, saveNoteSaga);
 }

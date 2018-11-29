@@ -1,8 +1,8 @@
 import {
   CHANGE_INPUT,
-  GET_NOTES,
-  GET_NOTES_SUCCESS,
-  GET_NOTES_FAILURE,
+  SAVE_NOTE,
+  SAVE_NOTE_SUCCESS,
+  SAVE_NOTE_FAILURE,
 } from './constants';
 
 export const changeInput = input => ({
@@ -10,16 +10,15 @@ export const changeInput = input => ({
   input,
 });
 
-export const getNotes = () => ({
-  type: GET_NOTES,
+export const saveNote = () => ({
+  type: SAVE_NOTE,
 });
 
-export const getNotesSuccess = notes => ({
-  type: GET_NOTES_SUCCESS,
-  notes,
+export const saveNoteSuccess = () => ({
+  type: SAVE_NOTE_SUCCESS,
 });
 
-export const getNotesFailure = error => ({
-  type: GET_NOTES_FAILURE,
+export const saveNoteFailure = error => ({
+  type: SAVE_NOTE_FAILURE,
   error,
 });
