@@ -44,7 +44,7 @@ export class HomePage extends React.PureComponent {
             value={this.props.input}
             onChange={this.props.onChangeInput}
           />
-          <Submit type="submit" value="Save" />
+          <Submit type="submit" value="Save" disabled={this.props.loading} />
         </Form>
       </div>
     );
