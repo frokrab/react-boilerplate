@@ -12,10 +12,13 @@ const ngrok =
     ? require('ngrok')
     : false;
 const { resolve } = require('path');
+const { saveNote, getNotes } = require('../database/pgdb');
 const app = express();
 
 // If you need a backend, e.g. an API, add your custom backend-specific middleware here
 // app.use('/api', myApi);
+app.get('/notes', getNotes);
+app.post('/notes', saveNote);
 
 // In production we need to pass these values in instead of relying on webpack
 setup(app, {
@@ -34,6 +37,8 @@ app.get('*.js', (req, res, next) => {
   res.set('Content-Encoding', 'gzip');
   next();
 });
+
+app.use(express.json());
 
 // Start your app.
 app.listen(port, host, async err => {
