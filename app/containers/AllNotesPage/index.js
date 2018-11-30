@@ -3,6 +3,7 @@ import { createStructuredSelector } from 'reselect';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 
 import injectReducer from 'utils/injectReducer';
 import injectSaga from 'utils/injectSaga';
@@ -25,11 +26,14 @@ export class AllNotesPage extends React.PureComponent {
 
   render() {
     return (
-      <NotesList>
-        {this.props.notes.map(note => (
-          <NotesListEntry key={note.id}>{note.note}</NotesListEntry>
-        ))}
-      </NotesList>
+      <div>
+        <NotesList>
+          {this.props.notes.map(note => (
+            <NotesListEntry key={note.id}>{note.note}</NotesListEntry>
+          ))}
+        </NotesList>
+        <Link to="/">Add More Notes</Link>
+      </div>
     );
   }
 }
