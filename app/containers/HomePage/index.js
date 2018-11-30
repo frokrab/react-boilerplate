@@ -14,6 +14,7 @@ import { FormattedMessage } from 'react-intl';
 import { createStructuredSelector } from 'reselect';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
+import { Link } from 'react-router-dom';
 
 import injectReducer from 'utils/injectReducer';
 import injectSaga from 'utils/injectSaga';
@@ -46,6 +47,7 @@ export class HomePage extends React.PureComponent {
           />
           <Submit type="submit" value="Save" disabled={this.props.loading} />
         </Form>
+        <Link to="/all-notes">All Notes</Link>
       </div>
     );
   }
