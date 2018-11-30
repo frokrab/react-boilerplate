@@ -26,15 +26,9 @@ export class AllNotesPage extends React.PureComponent {
   render() {
     return (
       <NotesList>
-        <NotesListEntry>
-          {JSON.stringify("here's my first note")}
-        </NotesListEntry>
-        <NotesListEntry>
-          {JSON.stringify('and this would be my second')}
-        </NotesListEntry>
-        <NotesListEntry>
-          {JSON.stringify('this should be a third one right here')}
-        </NotesListEntry>
+        {this.props.notes.map(note => (
+          <NotesListEntry key={note.id}>{note.note}</NotesListEntry>
+        ))}
       </NotesList>
     );
   }
@@ -42,6 +36,7 @@ export class AllNotesPage extends React.PureComponent {
 
 AllNotesPage.propTypes = {
   getNotes: PropTypes.func,
+  notes: PropTypes.oneOfType([PropTypes.object, PropTypes.array]),
 };
 
 const mapDispatchToProps = dispatch => ({
