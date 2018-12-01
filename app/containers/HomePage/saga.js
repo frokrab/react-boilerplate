@@ -5,7 +5,7 @@ import { SAVE_NOTE } from './constants';
 import { saveNoteFailure, saveNoteSuccess } from './actions';
 import { makeSelectInput } from './selectors';
 
-const saveNote = input => axios.post('http://localhost:3000/notes', { input });
+const saveNote = input => axios.post('/notes', { input });
 
 function* saveNoteSaga() {
   try {

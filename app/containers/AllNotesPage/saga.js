@@ -4,7 +4,7 @@ import { put, call, takeLatest } from 'redux-saga/effects';
 import { GET_NOTES } from './constants';
 import { getNotesSuccess, getNotesFailure } from './actions';
 
-const fetchNotes = () => axios.get('http://localhost:3000/notes');
+const fetchNotes = () => axios.get('/notes');
 
 function* getNotesSaga() {
   try {
