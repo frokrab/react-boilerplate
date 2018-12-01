@@ -7,7 +7,7 @@ import { makeSelectInput } from './selectors';
 
 const saveNote = input => axios.post('/notes', { input });
 
-function* saveNoteSaga() {
+export function* saveNoteSaga() {
   try {
     const note = yield select(makeSelectInput());
     yield call(saveNote, note);
