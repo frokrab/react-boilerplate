@@ -1,0 +1,41 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`HomePage reducer handles changeInput action 1`] = `
+Immutable.Map {
+  "input": "testing",
+  "loading": false,
+  "error": false,
+}
+`;
+
+exports[`HomePage reducer handles saveNote action 1`] = `
+Immutable.Map {
+  "input": "",
+  "loading": true,
+  "error": false,
+}
+`;
+
+exports[`HomePage reducer handles saveNoteFailure action 1`] = `
+Immutable.Map {
+  "input": "",
+  "loading": false,
+  "error": "error",
+}
+`;
+
+exports[`HomePage reducer handles saveNoteSuccess action 1`] = `
+Immutable.Map {
+  "input": "",
+  "loading": false,
+  "error": false,
+}
+`;
+
+exports[`HomePage reducer returns initial state 1`] = `
+Immutable.Map {
+  "input": "",
+  "loading": false,
+  "error": false,
+}
+`;
