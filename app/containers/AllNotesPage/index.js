@@ -9,6 +9,7 @@ import injectReducer from 'utils/injectReducer';
 import injectSaga from 'utils/injectSaga';
 import NotesList from './NotesList';
 import NotesListEntry from './NotesListEntry';
+import Wrapper from './AllNotesWrapper';
 import { getNotes } from './actions';
 import {
   makeSelectNotes,
@@ -26,14 +27,15 @@ export class AllNotesPage extends React.PureComponent {
 
   render() {
     return (
-      <div>
+      <Wrapper>
+        <Link to="/">Add more notes</Link>
         <NotesList>
           {this.props.notes.map(note => (
             <NotesListEntry key={note.id}>{note.note}</NotesListEntry>
           ))}
         </NotesList>
-        <Link to="/">Add More Notes</Link>
-      </div>
+        <a href="#top">Back to top</a>
+      </Wrapper>
     );
   }
 }
