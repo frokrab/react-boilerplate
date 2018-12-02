@@ -43,7 +43,7 @@
     "test:watch": "cross-env NODE_ENV=test jest --watchAll",
     "coveralls": "cat ./coverage/lcov.info | coveralls",
     "prettify": "prettier --write",
-    "db-setup": "psql <database/db.sql && psql dmi_notes <database/schema.sql"
+    "db-setup": "createdb dmi_notes && psql dmi_notes <database/schema.sql"
   },
   "lint-staged": {
     "*.js": [
