@@ -22,6 +22,7 @@ import messages from './messages';
 import Input from './Input';
 import Form from './Form';
 import Submit from './Submit';
+import Wrapper from './Wrapper';
 import { changeInput, saveNote } from './actions';
 import {
   makeSelectInput,
@@ -35,7 +36,7 @@ import saga from './saga';
 export class HomePage extends React.PureComponent {
   render() {
     return (
-      <div>
+      <Wrapper>
         <h1>
           <FormattedMessage {...messages.header} />
         </h1>
@@ -48,7 +49,7 @@ export class HomePage extends React.PureComponent {
           <Submit type="submit" value="Save" disabled={this.props.loading} />
         </Form>
         <Link to="/all-notes">All Notes</Link>
-      </div>
+      </Wrapper>
     );
   }
 }
