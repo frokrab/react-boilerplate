@@ -22,7 +22,7 @@ import messages from './messages';
 import Input from './Input';
 import Form from './Form';
 import Submit from './Submit';
-import Wrapper from './Wrapper';
+import Wrapper from './HomeWrapper';
 import { changeInput, saveNote } from './actions';
 import {
   makeSelectInput,
@@ -48,7 +48,7 @@ export class HomePage extends React.PureComponent {
           />
           <Submit type="submit" value="Save" disabled={this.props.loading} />
         </Form>
-        <Link to="/all-notes">All Notes</Link>
+        <Link to="/all-notes">View all saved notes</Link>
       </Wrapper>
     );
   }

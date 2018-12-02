@@ -39,7 +39,7 @@ describe('<HomePage />', () => {
     expect(renderedComponent.contains(form)).toEqual(true);
   });
   it('should render a Link', () => {
-    const link = <Link to="/all-notes">All Notes</Link>;
+    const link = <Link to="/all-notes">View all saved notes</Link>;
     expect(renderedComponent.contains(link)).toEqual(true);
   });
   it('should update input on change', () => {
