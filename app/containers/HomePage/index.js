@@ -23,6 +23,7 @@ import Input from './Input';
 import Form from './Form';
 import Submit from './Submit';
 import Wrapper from './HomeWrapper';
+import Header from './Header';
 import { changeInput, saveNote } from './actions';
 import {
   makeSelectInput,
@@ -37,9 +38,9 @@ export class HomePage extends React.PureComponent {
   render() {
     return (
       <Wrapper>
-        <h1>
+        <Header>
           <FormattedMessage {...messages.header} />
-        </h1>
+        </Header>
         <Form onSubmit={this.props.saveNote}>
           <Input
             placeholder="enter your note here"
